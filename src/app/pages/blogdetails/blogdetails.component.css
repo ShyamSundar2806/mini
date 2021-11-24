@@ -1,0 +1,33 @@
+.container{
+    
+    width: 100%;
+    height:1800px;
+
+
+}
+.card{
+width: 45%;
+float: left;
+margin: 10px;
+height: 500px;
+border: 1px solid black;
+}
+.cardbody{
+margin: 20px;
+}
+.cardbody img{
+
+width: 120px;
+height: 80px;
+margin: 5px;
+
+}
+
+button{
+float: right;
+padding: 5px;
+background-color:red;
+width: 150px;
+height: 30px;
+border-radius: 25px;
+}

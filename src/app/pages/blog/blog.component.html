@@ -2,16 +2,19 @@
 
     <div class="row">
 
-        <div class="card1" style="background-color: white;" *ngFor='let blog of blogs.articles' >
-
-            <div class="card">
-                <div class="cardbody">
-                    <p > {{blog.title}}</p>           
-                </div>
+            <div class="card"  *ngFor='let blog of blogs.articles , let i = index'>
+                <div class="cardbody" *ngIf="i < 5">
+                    
+                     <img src="{{blog.urlToImage}}" *ngIf="blog.urlToImage != null else noimg"> 
+                     <ng-template #noimg>
+                         <img src="../../../assets/images/no-image.png">
+                     </ng-template>
+                    <a> {{blog.title  | uppercase | slice:0:70}}</a>   
+                    <p>{{blog.description | slice:0:250}}</p>        
+                </div><br>
 
             </div>
-
-        </div>
+            <button (click)=blog1()>Read more</button>
 
     </div>
 

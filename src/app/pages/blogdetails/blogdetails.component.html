@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="card" *ngFor='let blog of blogdetails' >
+        <div class="cardbody" >
+            <p >{{blog.url}}</p>
+            <img src="{{blog.urlToImage}}" *ngIf="blog.urlToImage != null else noimg"> 
+            <ng-template #noimg>
+                <img src="../../../assets/images/no-image.png">
+            </ng-template>
+            <p>{{blog.author}}</p> 
+           <p> {{blog.title}}</p>   
+           <p>{{blog.description}}</p>  
+           <p>{{blog.content}}</p>
+           <button>Read More</button>      
+       </div><br>
+    </div>
+</div>

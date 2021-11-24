@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ApiservicesService } from 'src/app/Services/apiservices.service';
+import { Router } from '@angular/router';
+import { ApiservicesService } from 'src/app/services/apiservices.service';
 
 @Component({
   selector: 'app-blog',
@@ -9,28 +10,22 @@ import { ApiservicesService } from 'src/app/Services/apiservices.service';
 export class BlogComponent implements OnInit {
 
   
-  constructor(private http:ApiservicesService) { }
-blogs:any;
-title:any;
+  constructor(private http:ApiservicesService,private router:Router) { }
+  blog:any;
+  blogs:any;
   ngOnInit(): void {
   
   this.http.blogs().subscribe(data=>{
 
-    this.blogs=data;
-
-    // if(this.blogs.length==0){
-
-    //   console.log("error")
-
-    // }
-    // console.log("Data get",this.blogs);
-    this.blogs.articles[0].title 
-   
-    // if(this.title.length<=70){
-    //   console.log(this.title)
-    // }
+    //this.blogs=data;
+    localStorage.setItem('setblog',JSON.stringify(data))
     
  })
+ this.blog=localStorage.getItem('setblog');
+  this.blogs=JSON.parse(this.blog)
 
+  }
+  blog1(){
+    this.router.navigateByUrl('blog1')
   }
 }

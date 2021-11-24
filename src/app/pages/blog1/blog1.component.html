@@ -1,0 +1,15 @@
+<div class="container">
+    <div class="card" *ngFor='let blog of blogs.articles; let i = index'>
+        <div class="cardbody" >
+            <img src="{{blog.urlToImage}}" *ngIf="blog.urlToImage != null else noimg"> 
+            <ng-template #noimg>
+                <img src="../../../assets/images/no-image.png">
+            </ng-template>
+            <p>Author:<span>{{blog.author}}</span></p> 
+           <p> {{blog.title | slice:0:70}}</p>   
+           <p>{{blog.description | slice:0:250}}</p> 
+           <a [routerLink]="['/blogdetails',i]">Readmore</a> 
+           <!-- <button  (click)="method(blog.url)">Read More</button>       -->
+       </div><br>
+    </div>
+</div>
