@@ -6,25 +6,30 @@
                         <div class="form-group">
                           <label class="blog-form-input"> title:</label>
                           <input formControlName="title" type="text" class="form-control">
-                          <!-- <small *ngIf="title.invalid && title.touched" class="text-danger">Name is Required</small>   -->
-                        </div>
-                        <!-- <div class="form-group">
-                          <label class="blog-form-input">Email:</label>
-                          <input formControlName="email" type="text" class="form-control" >
-                          <small *ngIf="email.invalid && email.touched" class="text-danger">Email is Required</small>
+                          <small *ngIf="title.invalid && title.touched" class="text-danger">Title is Required</small>  
                         </div>
                         <div class="form-group">
-                          <label class="blog-form-input">Phone:</label>
-                          <input formControlName="phone" type="text" class="form-control" >
-                          <small *ngIf="phone.invalid && phone.touched" class="text-danger">Phone no is Required(minimum length 10,numbers are only allowed)</small>
+                          <label class="blog-form-input">Author:</label>
+                          <input formControlName="author" type="text" class="form-control" >
+                          <small *ngIf="author.invalid && author.touched" class="text-danger">Author is Required</small>
                         </div>
                         <div class="form-group">
-                          <label class="blog-form-input">Message:</label>
-                          <textarea formControlName="message" class="form-control" ></textarea>
-                          <small *ngIf="message.invalid && message.touched" class="text-danger"> Message is Required(minimum length 10)</small> 
-                        </div> -->
-                        <button  type="submit"  (click)=blogs(alldetails)>Send message</button>
-                        <!-- <button (click)="clicksub()" [disabled]="exform.invalid">Reset</button> -->
+                          <label class="blog-form-input">Description:</label>
+                          <input formControlName="description" type="text" class="form-control" >
+                          <small *ngIf="description.invalid && description.touched" class="text-danger">Description is Required</small>
+                        </div>
+                        <div class="form-group">
+                          <label class="blog-form-input">Image:</label>
+                          <input formControlName="urlToImage" type="text" class="form-control" >
+                          <small *ngIf="urlToImage.invalid && urlToImage.touched" class="text-danger">Image is Required</small>
+                        </div>
+                        <div class="form-group">
+                          <label class="blog-form-input">Content:</label>
+                          <textarea formControlName="content" class="form-control" ></textarea>
+                          <small *ngIf="content.invalid && content.touched" class="text-danger"> Content is Required</small> 
+                        </div> 
+                        <button  type="submit"  (click)=blogs(alldetails) [disabled]="alldetails.invalid" >Submit</button>
+                        <button (click)="Reset()" [disabled]="alldetails.invalid">Reset</button>
                       </form>
                 </div>
             </div>

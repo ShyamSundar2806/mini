@@ -7,7 +7,7 @@
             </ng-template>
             <h4>Author: <span>{{blog.author}}</span></h4> 
            <h4>Title:<span> {{blog.title | slice:0:70}}</span></h4>   
-           <h4>Description:<p>{{blog.description | slice:0:250}}</p></h4> 
+           <h4>Description:<span>{{blog.description | slice:0:250}}</span></h4> 
            <button [routerLink]="['/blogdetails',i]">Readmore</button> 
        </div><br>
     </div>

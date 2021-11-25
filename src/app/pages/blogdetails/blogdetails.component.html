@@ -7,11 +7,11 @@
                 <img src="../../../assets/images/no-image.png">
             </ng-template>
     
-            <p>{{blogdetails.author}}</p> 
-           <p> {{blogdetails.title}}</p>   
-           <p>{{blogdetails.description}}</p>  
-           <p>{{blogdetails.content}}</p>
-              
+            <h4>Author: <span>{{blogdetails.author}}</span></h4> 
+            <h4>Title:<span> {{blogdetails.title }}</span></h4>   
+            <h4>Description:<span>{{blogdetails.description}}</span></h4> 
+           <h4>Content:<span>{{blogdetails.content}}</span></h4>
+             <button (click)=delete()>Delete</button> 
        </div><br>
     </div>
 </div>

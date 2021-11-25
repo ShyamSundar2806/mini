@@ -44,5 +44,9 @@ addblogs(a:any){
   localStorage.setItem('setblog',JSON.stringify(this.blogarray))
 
 }
+delete(index:any){
+  console.log(index)
+  this.blogarray.splice(index,1)
+}
 
 }

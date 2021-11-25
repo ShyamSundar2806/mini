@@ -24,6 +24,11 @@ blogdetails:any;
     console.log("f",this.blogdetails)
     // this.b=JSON.parse(this.blogdetails)
     // console.log(this.b)
+
+
+    }
+    delete(){
+      this.http.delete(this.id)
     }
   }
 

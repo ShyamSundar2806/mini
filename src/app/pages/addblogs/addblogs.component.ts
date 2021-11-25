@@ -14,15 +14,50 @@ export class AddblogsComponent implements OnInit {
 
   ngOnInit(): void {
     this.alldetails=new FormGroup({
-      'title':new FormControl(null,Validators.required)
+      'title':new FormControl(null,Validators.required),
+      'author':new FormControl(null,Validators.required),
+      'description':new FormControl(null,Validators.required),
+      'content':new FormControl(null,Validators.required),
+      'urlToImage':new FormControl(null,Validators.required)
 
     });
 
   }
 blogs(data:any){
   this.a={
-    title:data.value.title
+    title:data.value.title,
+    author:data.value.author,
+    description:data.value.description,
+    content:data.value.content,
+    urlToImage:data.value.urlToImage
   }
   this.http.addblogs(this.a)
 }
+
+
+
+
+
+
+
+Reset() {
+  console.log(this.alldetails.value);
+  this.alldetails.reset();
+}
+get title() {
+  return this.alldetails.get('title');
+}
+get author() {
+  return this.alldetails.get('author');
+}
+get description() {
+  return this.alldetails.get('description');
+}
+get urlToImage() {
+  return this.alldetails.get('urlToImage');
+}
+get content(){
+  return this.alldetails.get('content');
+}
+
 }
