@@ -1,0 +1,31 @@
+<div class="container-fluid">
+    <div class="container">
+                <div class="row">
+                  
+                    <form [formGroup]="alldetails" >
+                        <div class="form-group">
+                          <label class="blog-form-input"> title:</label>
+                          <input formControlName="title" type="text" class="form-control">
+                          <small *ngIf="title.invalid && title.touched" class="text-danger">Name is Required</small>  
+                        </div>
+                        <!-- <div class="form-group">
+                          <label class="blog-form-input">Email:</label>
+                          <input formControlName="email" type="text" class="form-control" >
+                          <small *ngIf="email.invalid && email.touched" class="text-danger">Email is Required</small>
+                        </div>
+                        <div class="form-group">
+                          <label class="blog-form-input">Phone:</label>
+                          <input formControlName="phone" type="text" class="form-control" >
+                          <small *ngIf="phone.invalid && phone.touched" class="text-danger">Phone no is Required(minimum length 10,numbers are only allowed)</small>
+                        </div>
+                        <div class="form-group">
+                          <label class="blog-form-input">Message:</label>
+                          <textarea formControlName="message" class="form-control" ></textarea>
+                          <small *ngIf="message.invalid && message.touched" class="text-danger"> Message is Required(minimum length 10)</small> 
+                        </div> -->
+                        <button  type="submit"  (click)=blogs(alldetails)>Send message</button>
+                        <!-- <button (click)="clicksub()" [disabled]="exform.invalid">Reset</button> -->
+                      </form>
+                </div>
+            </div>
+        </div>

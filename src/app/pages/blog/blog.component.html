@@ -2,7 +2,7 @@
 
     <div class="row">
 
-            <div class="card"  *ngFor='let blog of blogs.articles , let i = index'>
+            <div class="card"  *ngFor='let blog of blogs , let i = index'>
                 <div class="cardbody" *ngIf="i < 5">
                     
                      <img src="{{blog.urlToImage}}" *ngIf="blog.urlToImage != null else noimg"> 
@@ -10,7 +10,8 @@
                          <img src="../../../assets/images/no-image.png">
                      </ng-template>
                     <a> {{blog.title  | uppercase | slice:0:70}}</a>   
-                    <p>{{blog.description | slice:0:250}}</p>        
+                    <p>{{blog.description | slice:0:250}}</p>  
+                    <p>{{blog.publishedAt | date:'medium'}}</p>      
                 </div><br>
 
             </div>

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ApiservicesService } from 'src/app/services/apiservices.service';
+import { GetservicesService } from 'src/app/services/getservices.service';
 
 @Component({
   selector: 'app-blogdetails',
@@ -8,18 +9,20 @@ import { ApiservicesService } from 'src/app/services/apiservices.service';
   styleUrls: ['./blogdetails.component.css']
 })
 export class BlogdetailsComponent implements OnInit {
-blogs:any;
-blog:any;
+
 id:any;
 blogdetails:any;
-b:any;
-  constructor(private http:ApiservicesService,private router:ActivatedRoute) { }
+
+  constructor(private http:GetservicesService,private router:ActivatedRoute) { }
   ngOnInit(): void {
     
-    
+    // const Timer:any=setTimeout(function(){
+      
+    // },3000);
     this.id=this.router.snapshot.params['id'];
-    this.blogdetails=this.http.method(this.id)
-    // this.b=JSON.stringify(this.blogdetails)
+    this.blogdetails=this.http.index(this.id)
+    console.log("f",this.blogdetails)
+    // this.b=JSON.parse(this.blogdetails)
     // console.log(this.b)
     }
   }

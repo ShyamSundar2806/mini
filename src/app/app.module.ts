@@ -21,7 +21,7 @@ import { Blog1Component } from './pages/blog1/blog1.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
