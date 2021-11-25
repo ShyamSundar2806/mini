@@ -4,7 +4,7 @@
                   
                     <form [formGroup]="alldetails" >
                         <div class="form-group">
-                          <label class="blog-form-input"> title:</label>
+                          <label class="blog-form-input"> Title:</label>
                           <input formControlName="title" type="text" class="form-control">
                           <small *ngIf="title.invalid && title.touched" class="text-danger">Title is Required</small>  
                         </div>
@@ -25,11 +25,11 @@
                         </div>
                         <div class="form-group">
                           <label class="blog-form-input">Content:</label>
-                          <textarea formControlName="content" class="form-control" ></textarea>
+                          <input formControlName="content" class="form-control" >
                           <small *ngIf="content.invalid && content.touched" class="text-danger"> Content is Required</small> 
                         </div> 
                         <button  type="submit"  (click)=blogs(alldetails) [disabled]="alldetails.invalid" >Submit</button>
-                        <button (click)="Reset()" [disabled]="alldetails.invalid">Reset</button>
+                        <button class="button1" (click)="Reset()" [disabled]="alldetails.invalid">Reset</button>
                       </form>
                 </div>
             </div>
