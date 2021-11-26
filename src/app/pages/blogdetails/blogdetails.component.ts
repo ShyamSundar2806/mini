@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { ApiservicesService } from 'src/app/services/apiservices.service';
+import { ActivatedRoute, Router } from '@angular/router';
+
 import { GetservicesService } from 'src/app/services/getservices.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-blogdetails',
@@ -13,8 +14,9 @@ export class BlogdetailsComponent implements OnInit {
 id:any;
 blogdetails:any;
 
-  constructor(private http:GetservicesService,private router:ActivatedRoute) { }
+  constructor(private http:GetservicesService,private r:Router,private router:ActivatedRoute,private location:Location) { }
   ngOnInit(): void {
+    console.log("g",this.r.url)
     
     // const Timer:any=setTimeout(function(){
       
@@ -29,6 +31,7 @@ blogdetails:any;
     }
     delete(){
       this.http.delete(this.id)
+      this.location.back();
     }
   }
 

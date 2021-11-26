@@ -35,8 +35,13 @@ getdata(){
 
 index(index:any){
   return this.blogarray[index];
-
 }
+
+// array(){
+//   let sumFunction = async function (this.blogarray[index]){return a + b
+//   }
+  
+
 
 addblogs(a:any){
   // console.log(a)
@@ -47,6 +52,7 @@ addblogs(a:any){
 delete(index:any){
   console.log(index)
   this.blogarray.splice(index,1)
+  localStorage.setItem('setblog',JSON.stringify(this.blogarray))
 }
 
 }
