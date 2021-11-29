@@ -11,28 +11,37 @@ import { Location } from '@angular/common';
 })
 export class BlogdetailsComponent implements OnInit {
 
-id:any;
-blogdetails:any;
+  id: any;
+  blogdetails: any;
+  url: any;
+  u: any;
 
-  constructor(private http:GetservicesService,private r:Router,private router:ActivatedRoute,private location:Location) { }
+  constructor(private http: GetservicesService, private r: Router, private router: ActivatedRoute, private location: Location) { }
   ngOnInit(): void {
-    console.log("g",this.r.url)
-    
-    // const Timer:any=setTimeout(function(){
-      
-    // },3000);
-    this.id=this.router.snapshot.params['id'];
-    this.blogdetails=this.http.index(this.id)
-    console.log("f",this.blogdetails)
-    // this.b=JSON.parse(this.blogdetails)
-    // console.log(this.b)
+    // console.log("g",this.r.url)
 
+    // console.log(this.r.url)
+    this.url = this.r.url
+    this.u = this.url.replace("/blogdetails", "");
+    //  console.log("hu",this.u)
+    this.http.blogarray.forEach((value: any) => {
+      var blogurl1 = value.url
+      // console.log("he",blogurl1);
 
-    }
-    delete(){
-      this.http.delete(this.id)
-      this.location.back();
-    }
+      // console.log("url",this.u);
+
+      if (blogurl1 == this.u) {
+
+        this.blogdetails = value
+
+        console.log("hXHCljah")
+      }
+    });
+  }
+  delete() {
+    this.http.delete(this.url)
+    this.location.back();
   }
 
+}
 

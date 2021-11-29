@@ -8,11 +8,11 @@ export class GetservicesService {
 blogarr:any;
 blogarray:any;
 b:any;
+
   constructor(private http:ApiservicesService) {
     this.blogarray=localStorage.getItem('setblog')
     if(!this.blogarray){
       this.setdata();
-
     }
  
  this.getdata();
@@ -43,14 +43,14 @@ index(index:any){
   
 
 
-addblogs(a:any){
+addblogs(a :any){
   // console.log(a)
   this.blogarray.push(a);
   localStorage.setItem('setblog',JSON.stringify(this.blogarray))
 
 }
 delete(index:any){
-  console.log(index)
+  
   this.blogarray.splice(index,1)
   localStorage.setItem('setblog',JSON.stringify(this.blogarray))
 }

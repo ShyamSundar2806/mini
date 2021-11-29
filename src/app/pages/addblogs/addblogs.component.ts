@@ -10,26 +10,32 @@ import { GetservicesService } from 'src/app/services/getservices.service';
 export class AddblogsComponent implements OnInit {
   alldetails:any;
   a:any
-  constructor( private http:GetservicesService) { }
-
-  ngOnInit(): void {
+  constructor( private http:GetservicesService) { 
     this.alldetails=new FormGroup({
       'title':new FormControl(null,Validators.required),
       'author':new FormControl(null,Validators.required),
       'description':new FormControl(null,Validators.required),
       'content':new FormControl(null,Validators.required),
-      'urlToImage':new FormControl(null,Validators.required)
+      'urlToImage':new FormControl(null,Validators.required),
+      'url':new FormControl(null,Validators.required)
 
     });
 
+    let lenght=this.http.blogarray.length
+
+    this.alldetails.controls["url"].setValue("/blog/blog-"+lenght)
   }
+
+  ngOnInit(): void {  }
 blogs(data:any){
   this.a={
     title:data.value.title,
     author:data.value.author,
     description:data.value.description,
     content:data.value.content,
-    urlToImage:data.value.urlToImage
+    urlToImage:data.value.urlToImage,
+    url:data.value.url
+
   }
   this.http.addblogs(this.a)
 }
