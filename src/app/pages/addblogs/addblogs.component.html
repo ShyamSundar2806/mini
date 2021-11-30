@@ -5,7 +5,8 @@
                     <form [formGroup]="alldetails" >
                       <div class="form-group">
                         <label class="blog-form-input"> URL:</label>
-                        <input formControlName="url" type="text" class="form-control" readonly >
+                        <input formControlName="url" type="text" class="form-control"  >
+                        <small *ngIf="url.invalid && url.touched" class="text-danger">URL is Required</small> 
 
                       </div>
                         <div class="form-group">

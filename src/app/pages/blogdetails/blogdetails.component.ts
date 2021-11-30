@@ -15,13 +15,14 @@ export class BlogdetailsComponent implements OnInit {
   blogdetails: any;
   url: any;
   u: any;
+  edit1:any;
 
-  constructor(private http: GetservicesService, private r: Router, private router: ActivatedRoute, private location: Location) { }
+  constructor(private http: GetservicesService, private router: Router, private location: Location) { }
   ngOnInit(): void {
     // console.log("g",this.r.url)
 
     // console.log(this.r.url)
-    this.url = this.r.url
+    this.url = this.router.url
     this.u = this.url.replace("/blogdetails", "");
     //  console.log("hu",this.u)
     this.http.blogarray.forEach((value: any) => {
@@ -37,11 +38,54 @@ export class BlogdetailsComponent implements OnInit {
         console.log("hXHCljah")
       }
     });
+
+
+    
+    
   }
+  
+
+  // edit(index:any){
+  //   // this.http.edit(this.url)
+  //   alert("hi")
+  //   this.router.navigateByUrl("updateblogs")  
+  //   this.http.editF(index);
+  // }
+
+
+
   delete() {
-    this.http.delete(this.url)
+    this.http.blogarray.forEach((value: any,index:any) => {
+
+      console.log("i",index);
+      
+      var blogurl1 = value.url
+      if (blogurl1 == this.u) {
+        this.blogdetails = index
+      }
+    });
+    this.http.blogarray.splice(this.blogdetails,1)
+  localStorage.setItem('setblog',JSON.stringify(this.http.blogarray))
     this.location.back();
   }
+
+
+
+  
+edit(blogdetails:any){
+  this.u=this.u.split('/');
+  this.u=this.u[2];
+  this.u=this.u.split('-');
+  this.u=this.u[1]
+  console.log("u",this.u);
+  
+  console.log("edit",blogdetails)
+
+  this.router.navigateByUrl("updateblogs")
+  this.http.editF(blogdetails,this.u)
+  
+
+}
 
 }
 

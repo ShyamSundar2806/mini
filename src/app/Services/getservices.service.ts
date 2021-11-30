@@ -8,6 +8,8 @@ export class GetservicesService {
 blogarr:any;
 blogarray:any;
 b:any;
+id=-1;
+edit:any;
 
   constructor(private http:ApiservicesService) {
     this.blogarray=localStorage.getItem('setblog')
@@ -34,25 +36,66 @@ getdata(){
 }
 
 index(index:any){
+  console.log("in",index)
   return this.blogarray[index];
 }
 
-// array(){
-//   let sumFunction = async function (this.blogarray[index]){return a + b
-//   }
+
   
 
 
 addblogs(a :any){
-  // console.log(a)
-  this.blogarray.push(a);
-  localStorage.setItem('setblog',JSON.stringify(this.blogarray))
+  if(this.id==-1){
+    this.blogarray.push(a);
+    alert("added")
 
-}
-delete(index:any){
+  }
+  else{
+    this.blogarray[this.id]=a;
+    alert("updated")
+    
+  }
+ 
   
-  this.blogarray.splice(index,1)
   localStorage.setItem('setblog',JSON.stringify(this.blogarray))
-}
+  
 
 }
+
+
+editF(blogdetails:any,u:any){
+  this.edit=blogdetails
+  console.log("e",u);
+  this.id=u;
+  
+
+}
+
+
+
+
+// submitBlogEdit(a: any, blogarray: any) {
+
+//   if (this.action == -1) {
+
+//    this.blogarray.push(a.value)
+
+//     localStorage.setItem("setblog", JSON.stringify(this.blogarray));
+
+//     alert("blogadded");
+
+//   }
+
+//   else {
+//     this.blogarray[this.action] = a.value;
+//     localStorage.setItem("setblog", JSON.stringify(this.blogarray))
+//     alert("Blog Edited Successfull");
+
+//   }
+// }
+
+}
+
+
+
+
