@@ -11,18 +11,16 @@ import { GetservicesService } from 'src/app/services/getservices.service';
 export class Blog1Component implements OnInit {
 blog:any=[];
 blogs:any=[];
-a:any;
-b:any
+b:any;
   constructor(private http:GetservicesService,private router:Router) {
+
   }
 
-
-  readdetails(detail:any){
-
-    console.log(detail)
-    this.a=detail;
-     this.router.navigateByUrl("blogdetails"+this.a)
+/*-----------url passing to services----------- */
+  readdetails(url:any){  
+     this.router.navigateByUrl("blogdetails"+url);
   }
+
   ngOnInit(): void {
     
 

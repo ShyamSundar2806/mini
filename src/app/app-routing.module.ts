@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ErrorComponent } from './Components/error/error.component';
+import { AddblogsComponent } from './pages/addblogs/addblogs.component';
 import { Blog1Component } from './pages/blog1/blog1.component';
 
 const routes: Routes = [
@@ -17,11 +19,17 @@ const routes: Routes = [
   
   { path: 'blogdetails', loadChildren: () => import('./pages/blogdetails/blogdetails.module').then(m => m.BlogdetailsModule) },
   { path: 'addblogs', loadChildren: () => import('./pages/addblogs/addblogs.module').then(m => m.AddblogsModule) },
-  { path: 'updateblogs', loadChildren: () => import('./pages/addblogs/addblogs.module').then(m => m.AddblogsModule) }
+  { path: 'updateblogs', component:AddblogsComponent},
+  {
+    path:'**',
+    component:ErrorComponent
+  }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {
+    initialNavigation: 'enabledBlocking'
+})],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

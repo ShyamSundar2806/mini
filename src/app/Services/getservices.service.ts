@@ -5,11 +5,15 @@ import { ApiservicesService } from './apiservices.service';
   providedIn: 'root'
 })
 export class GetservicesService {
-blogarr:any;
+
+setblogarray:any;
 blogarray:any;
-b:any;
-id=-1;
-edit:any;
+localstorage=-1;
+id:any;
+alldetails:any;
+updatevalue:any;
+
+
 
   constructor(private http:ApiservicesService) {
     this.blogarray=localStorage.getItem('setblog')
@@ -21,78 +25,59 @@ edit:any;
  
   }
 
+/*--------------------------Date Storeing in to localstorage ------------------*/
+
 setdata(){
   this.http.blogs().subscribe(data => {
-    this.blogarr=data.articles;
-    localStorage.setItem('setblog',JSON.stringify(this.blogarr));
+    this.setblogarray=data.articles;
+    localStorage.setItem('setblog',JSON.stringify(this.setblogarray));
   
 })
 }
 
+/*--------------------------Date Geting in to localstorage------------------*/
 
 getdata(){
+
   this.blogarray=JSON.parse(localStorage.getItem('setblog')|| '{}');
 
 }
 
+/*--------------------------Getting index value------------------*/
+
 index(index:any){
-  console.log("in",index)
+  
   return this.blogarray[index];
 }
 
 
-  
+  /*--------------------------Edit Blog Function------------------*/
 
 
-addblogs(a :any){
-  if(this.id==-1){
-    this.blogarray.push(a);
+addblogs(value :any){
+
+  if (this.localstorage == -1) {
+
+    this.blogarray.push(value);
     alert("added")
-
-  }
-  else{
-    this.blogarray[this.id]=a;
-    alert("updated")
     
+
+  } else {
+
+    this.blogarray[this.localstorage] = value;
+    alert("updated")
   }
- 
-  
-  localStorage.setItem('setblog',JSON.stringify(this.blogarray))
-  
+   localStorage.setItem("setblog",JSON.stringify(this.blogarray));
+  }
+
+/*--------------------------Edit Blog Function------------------*/
+editF(updateblog:any,id:any){
+  this.updatevalue = updateblog;
+  this.id = id;
+  this.localstorage = id;
 
 }
 
-
-editF(blogdetails:any,u:any){
-  this.edit=blogdetails
-  console.log("e",u);
-  this.id=u;
-  
-
-}
-
-
-
-
-// submitBlogEdit(a: any, blogarray: any) {
-
-//   if (this.action == -1) {
-
-//    this.blogarray.push(a.value)
-
-//     localStorage.setItem("setblog", JSON.stringify(this.blogarray));
-
-//     alert("blogadded");
-
-//   }
-
-//   else {
-//     this.blogarray[this.action] = a.value;
-//     localStorage.setItem("setblog", JSON.stringify(this.blogarray))
-//     alert("Blog Edited Successfull");
-
-//   }
-// }
 
 }
 

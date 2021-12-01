@@ -15,6 +15,9 @@ export class BlogComponent implements OnInit {
   blog:any;
   blogs:any;
   ngOnInit(): void {
+
+
+    /*--------------------Sorting published time------------*/
     this.blogs=this.http.blogarray;  
   
     this.blogs.sort((x: any) => {
@@ -29,6 +32,8 @@ export class BlogComponent implements OnInit {
  
     
   }
+
+  
   blog1(){
     this.router.navigateByUrl('blog1')
   }

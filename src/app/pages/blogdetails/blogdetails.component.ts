@@ -14,24 +14,21 @@ export class BlogdetailsComponent implements OnInit {
   id: any;
   blogdetails: any;
   url: any;
-  u: any;
-  edit1:any;
+  replaceurl: any;
+  uid:any
+  updatedetails:any
 
   constructor(private http: GetservicesService, private router: Router, private location: Location) { }
+  
   ngOnInit(): void {
-    // console.log("g",this.r.url)
-
-    // console.log(this.r.url)
+   
     this.url = this.router.url
-    this.u = this.url.replace("/blogdetails", "");
-    //  console.log("hu",this.u)
+    this.replaceurl = this.url.replace("/blogdetails", "");
+   
     this.http.blogarray.forEach((value: any) => {
       var blogurl1 = value.url
-      // console.log("he",blogurl1);
-
-      // console.log("url",this.u);
-
-      if (blogurl1 == this.u) {
+    
+      if (blogurl1 == this.replaceurl) {
 
         this.blogdetails = value
 
@@ -39,28 +36,22 @@ export class BlogdetailsComponent implements OnInit {
       }
     });
 
-
-    
     
   }
   
-
-  // edit(index:any){
-  //   // this.http.edit(this.url)
-  //   alert("hi")
-  //   this.router.navigateByUrl("updateblogs")  
-  //   this.http.editF(index);
-  // }
+  
 
 
+
+/*--------------deleting the blog ----------------------*/
 
   delete() {
     this.http.blogarray.forEach((value: any,index:any) => {
 
-      console.log("i",index);
+      
       
       var blogurl1 = value.url
-      if (blogurl1 == this.u) {
+      if (blogurl1 == this.replaceurl) {
         this.blogdetails = index
       }
     });
@@ -69,23 +60,20 @@ export class BlogdetailsComponent implements OnInit {
     this.location.back();
   }
 
-
-
+/*-----------------editing the blog-------------*/
+  edit(){
+    this.http.blogarray.forEach((updatevalue:any,index:any)=>{
+      this.updatedetails=updatevalue;
+      if(this.blogdetails==this.updatedetails){
+       
+        this.uid=index;
+      
+        this.http.editF(this.updatedetails,index);
+        this.router.navigateByUrl('updateblogs');
+      }
+    });
+   }
   
-edit(blogdetails:any){
-  this.u=this.u.split('/');
-  this.u=this.u[2];
-  this.u=this.u.split('-');
-  this.u=this.u[1]
-  console.log("u",this.u);
-  
-  console.log("edit",blogdetails)
-
-  this.router.navigateByUrl("updateblogs")
-  this.http.editF(blogdetails,this.u)
-  
-
-}
 
 }
 
